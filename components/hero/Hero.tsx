@@ -2,16 +2,21 @@
 
 import { motion, useMotionValue, useScroll, useSpring, useTransform } from "framer-motion";
 import { useEffect, useRef } from "react";
-import PhoneTerminal from "./PhoneTerminal";
+import dynamic from "next/dynamic";
 import FloatingCards from "./FloatingCards";
 import MagneticButton from "../ui/MagneticButton";
+
+// R3F is heavy — load it client-side only after first paint.
+const Phone3D = dynamic(() => import("./Phone3D").then((m) => m.default), {
+  ssr: false,
+  loading: () => null,
+});
 
 export default function Hero() {
   const ref = useRef<HTMLDivElement>(null);
   const pointerX = useMotionValue(0);
   const pointerY = useMotionValue(0);
 
-  // scroll-linked parallax for hero stage
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
@@ -19,7 +24,7 @@ export default function Hero() {
   const stageY = useTransform(scrollYProgress, [0, 1], [0, -120]);
   const stageScale = useTransform(scrollYProgress, [0, 1], [1, 0.94]);
   const stageOpacity = useTransform(scrollYProgress, [0, 0.7, 1], [1, 0.7, 0]);
-  const sStageY = useSpring(stageY, { stiffness: 80, damping: 20 });
+  const sStageY = useSpring(stageY, { stiffness: 80, damping: 22 });
 
   useEffect(() => {
     const el = ref.current;
@@ -49,7 +54,6 @@ export default function Hero() {
       id="main"
       className="relative isolate overflow-hidden pt-28 pb-32 sm:pt-36 lg:pt-40"
     >
-      {/* ambient lighting */}
       <AmbientBackdrop pointerX={pointerX} pointerY={pointerY} />
 
       <div className="container-page relative z-10">
@@ -114,8 +118,8 @@ export default function Hero() {
               Get started
               <span aria-hidden>→</span>
             </MagneticButton>
-            <MagneticButton href="#payments" variant="ghost">
-              Watch the film
+            <MagneticButton href="#tap-to-pay" variant="ghost">
+              See Tap to Pay on iPhone
               <PlayIcon />
             </MagneticButton>
           </motion.div>
@@ -127,11 +131,18 @@ export default function Hero() {
           className="relative mx-auto mt-16 flex h-[640px] max-w-[1100px] items-center justify-center sm:mt-24"
         >
           <div className="absolute inset-x-0 bottom-0 h-[260px] grid-floor opacity-50" />
-          <FloatingCards pointerX={pointerX} pointerY={pointerY} />
-          <PhoneTerminal pointerX={pointerX} pointerY={pointerY} />
+
+          {/* WebGL iPhone scene */}
+          <div className="absolute inset-0">
+            <Phone3D />
+          </div>
+
+          {/* HTML floating cards stay on top — crisp typography */}
+          <div className="pointer-events-none absolute inset-0">
+            <FloatingCards pointerX={pointerX} pointerY={pointerY} />
+          </div>
         </motion.div>
 
-        {/* live ticker */}
         <LiveTicker />
       </div>
     </section>
@@ -147,111 +158,65 @@ function AmbientBackdrop({
 }) {
   const x = useTransform(pointerX, [-1, 1], ["-6%", "6%"]);
   const y = useTransform(pointerY, [-1, 1], ["-4%", "4%"]);
-  const sx = useSpring(x, { stiffness: 40, damping: 18 });
-  const sy = useSpring(y, { stiffness: 40, damping: 18 });
+  const sx = useSpring(x, { stiffness: 40, damping: 22 });
+  const sy = useSpring(y, { stiffness: 40, damping: 22 });
 
   return (
-    <>
-      <div className="absolute inset-0 -z-10 overflow-hidden">
-        <motion.div
-          style={{ x: sx, y: sy }}
-          className="absolute left-1/2 top-[-10%] h-[900px] w-[900px] -translate-x-1/2 rounded-full opacity-50 blur-3xl"
-          aria-hidden
-        >
-          <div
-            className="h-full w-full"
-            style={{
-              background:
-                "radial-gradient(closest-side, rgba(255,255,255,0.18), transparent 70%)",
-            }}
-          />
-        </motion.div>
-        <motion.div
-          style={{ x: sy, y: sx }}
-          className="absolute left-[8%] top-[20%] h-[420px] w-[420px] rounded-full opacity-40 blur-3xl"
-          aria-hidden
-        >
-          <div
-            className="h-full w-full"
-            style={{
-              background:
-                "radial-gradient(closest-side, rgba(150,170,255,0.18), transparent 70%)",
-            }}
-          />
-        </motion.div>
-        <motion.div
-          style={{ x: sy }}
-          className="absolute right-[8%] top-[30%] h-[480px] w-[480px] rounded-full opacity-40 blur-3xl"
-          aria-hidden
-        >
-          <div
-            className="h-full w-full"
-            style={{
-              background:
-                "radial-gradient(closest-side, rgba(255,170,150,0.14), transparent 70%)",
-            }}
-          />
-        </motion.div>
-
-        {/* faint grid */}
+    <div className="absolute inset-0 -z-10 overflow-hidden">
+      <motion.div
+        style={{ x: sx, y: sy }}
+        className="absolute left-1/2 top-[-10%] h-[900px] w-[900px] -translate-x-1/2 rounded-full opacity-50 blur-3xl"
+        aria-hidden
+      >
         <div
-          className="absolute inset-0 opacity-[0.18]"
+          className="h-full w-full"
           style={{
-            backgroundImage:
-              "linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px)",
-            backgroundSize: "64px 64px",
-            maskImage:
-              "radial-gradient(ellipse 80% 50% at 50% 30%, #000 30%, transparent 75%)",
-            WebkitMaskImage:
-              "radial-gradient(ellipse 80% 50% at 50% 30%, #000 30%, transparent 75%)",
+            background:
+              "radial-gradient(closest-side, rgba(255,255,255,0.18), transparent 70%)",
           }}
         />
-
-        {/* particles */}
-        <Particles />
-
-        {/* noise */}
-        <div className="absolute inset-0 bg-noise opacity-[0.04] mix-blend-overlay" />
-      </div>
-    </>
-  );
-}
-
-function Particles() {
-  // deterministic positions to avoid hydration mismatch
-  const dots = Array.from({ length: 28 }, (_, i) => {
-    const x = ((i * 173) % 1000) / 10;
-    const y = ((i * 379) % 980) / 10;
-    const s = ((i * 13) % 5) / 4 + 0.5;
-    const d = ((i * 7) % 9) + 6;
-    return { x, y, s, d, delay: (i % 9) * 0.4 };
-  });
-  return (
-    <div className="absolute inset-0">
-      {dots.map((d, i) => (
-        <motion.span
-          key={i}
-          className="absolute rounded-full bg-white"
+      </motion.div>
+      <motion.div
+        style={{ x: sy, y: sx }}
+        className="absolute left-[8%] top-[20%] h-[420px] w-[420px] rounded-full opacity-40 blur-3xl"
+        aria-hidden
+      >
+        <div
+          className="h-full w-full"
           style={{
-            left: `${d.x}%`,
-            top: `${d.y}%`,
-            width: `${d.s * 2}px`,
-            height: `${d.s * 2}px`,
-            opacity: 0.18,
-            filter: "blur(0.4px)",
-          }}
-          animate={{
-            y: [0, -16, 0],
-            opacity: [0.06, 0.22, 0.06],
-          }}
-          transition={{
-            duration: d.d,
-            repeat: Infinity,
-            delay: d.delay,
-            ease: "easeInOut",
+            background:
+              "radial-gradient(closest-side, rgba(150,170,255,0.18), transparent 70%)",
           }}
         />
-      ))}
+      </motion.div>
+      <motion.div
+        style={{ x: sy }}
+        className="absolute right-[8%] top-[30%] h-[480px] w-[480px] rounded-full opacity-40 blur-3xl"
+        aria-hidden
+      >
+        <div
+          className="h-full w-full"
+          style={{
+            background:
+              "radial-gradient(closest-side, rgba(255,170,150,0.14), transparent 70%)",
+          }}
+        />
+      </motion.div>
+
+      <div
+        className="absolute inset-0 opacity-[0.18]"
+        style={{
+          backgroundImage:
+            "linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px)",
+          backgroundSize: "64px 64px",
+          maskImage:
+            "radial-gradient(ellipse 80% 50% at 50% 30%, #000 30%, transparent 75%)",
+          WebkitMaskImage:
+            "radial-gradient(ellipse 80% 50% at 50% 30%, #000 30%, transparent 75%)",
+        }}
+      />
+
+      <div className="absolute inset-0 bg-noise opacity-[0.04] mix-blend-overlay" />
     </div>
   );
 }

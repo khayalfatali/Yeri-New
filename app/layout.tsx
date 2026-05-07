@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import SmoothScroll from "@/components/SmoothScroll";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://yeri.com"),
@@ -54,6 +55,7 @@ export default function RootLayout({
         >
           Skip to content
         </a>
+        <SmoothScroll />
         {children}
       </body>
     </html>

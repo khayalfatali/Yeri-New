@@ -21,7 +21,7 @@ export default function Reveal({
   once = true,
 }: Props) {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once, margin: "-10% 0px -10% 0px" });
+  const inView = useInView(ref, { once, margin: "-12% 0px -8% 0px", amount: 0.15 });
   const Tag = motion[as];
 
   return (
@@ -29,7 +29,8 @@ export default function Reveal({
       ref={ref as React.RefObject<HTMLDivElement>}
       initial={{ opacity: 0, y }}
       animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y }}
-      transition={{ duration: 0.9, delay, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration: 1.0, delay, ease: [0.16, 1, 0.3, 1] }}
+      style={{ willChange: "transform, opacity" }}
       className={className}
     >
       {children}
