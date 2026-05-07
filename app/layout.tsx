@@ -5,11 +5,11 @@ import SmoothScroll from "@/components/SmoothScroll";
 export const metadata: Metadata = {
   metadataBase: new URL("https://yeri.com"),
   title: {
-    default: "Yeri — The merchant operating system",
+    default: "Yeri — The Merchant Operating System",
     template: "%s · Yeri",
   },
   description:
-    "Yeri combines payments, analytics, operations, CRM, inventory, and merchant workflows into one mobile-first platform. Accept contactless payments on iPhone and run your business from a single system.",
+    "Yeri is the Merchant Operating System. Accept contactless payments on iPhone with Tap to Pay, and run checkout, inventory, staff, CRM, and analytics from one mobile-first platform. Authorized PSP on the Apple Acceptance Platform.",
   keywords: [
     "merchant",
     "payments",
@@ -21,16 +21,16 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     type: "website",
-    title: "Yeri — Merchant infrastructure, reimagined.",
+    title: "Yeri — The Merchant Operating System",
     description:
-      "Payments, operations, analytics, and CRM unified in one mobile-first merchant platform.",
+      "Tap to Pay on iPhone, plus checkout, inventory, staff, CRM, and analytics in one mobile-first platform.",
     siteName: "Yeri",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Yeri — Merchant infrastructure, reimagined.",
+    title: "Yeri — The Merchant Operating System",
     description:
-      "Payments, operations, analytics, and CRM unified in one mobile-first merchant platform.",
+      "Tap to Pay on iPhone, plus checkout, inventory, staff, CRM, and analytics in one mobile-first platform.",
   },
 };
 

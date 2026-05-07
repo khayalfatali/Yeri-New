@@ -45,8 +45,8 @@ export default function Footer() {
           <div className="lg:col-span-4">
             <Logo />
             <p className="mt-5 max-w-xs text-[13.5px] leading-relaxed text-ink-300">
-              Yeri is the merchant operating system. Built mobile-first.
-              Designed for the next decade of commerce.
+              Yeri is the Merchant Operating System. Payments, operations, and
+              intelligence in one mobile-first platform — built around iPhone.
             </p>
             <form
               className="mt-6 flex max-w-sm items-center gap-2"
@@ -89,7 +89,16 @@ export default function Footer() {
         <div className="divider-soft mt-16" />
 
         <div className="mt-8 flex flex-col items-start justify-between gap-4 text-[12px] text-ink-400 sm:flex-row sm:items-center">
-          <p>© {new Date().getFullYear()} Yeri, Inc. All rights reserved.</p>
+          <div className="space-y-1">
+            <p>© {new Date().getFullYear()} Yeri Payment Services LLC. All rights reserved.</p>
+            <p className="text-ink-500">
+              Reg. No. 1009415381 · e37, m45, Binagadi District, Baku AZ1130, Azerbaijan
+            </p>
+            <p className="text-ink-500">
+              Authorized Payment Service Provider on the Apple Acceptance
+              Platform.
+            </p>
+          </div>
           <div className="flex flex-wrap items-center gap-6">
             <a href="#" className="hover:text-white">
               Privacy

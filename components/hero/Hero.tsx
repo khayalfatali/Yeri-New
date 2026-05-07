@@ -78,7 +78,7 @@ export default function Hero() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white/50" />
               <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-white" />
             </span>
-            Now in private beta · iOS 17+
+            Authorized PSP · Apple Acceptance Platform · iOS 17+
           </motion.div>
 
           <motion.h1
@@ -89,8 +89,8 @@ export default function Hero() {
             transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
             className="display mt-6 text-balance text-[44px] font-medium gradient-text sm:text-[64px] lg:text-[84px]"
           >
-            Merchant infrastructure,
-            <br className="hidden sm:block" /> reimagined.
+            The Merchant
+            <br className="hidden sm:block" /> Operating System.
           </motion.h1>
 
           <motion.p
@@ -101,9 +101,9 @@ export default function Hero() {
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
             className="mx-auto mt-6 max-w-2xl text-balance text-[16.5px] leading-[1.6] text-ink-200 sm:text-[18px]"
           >
-            Yeri combines payments, analytics, operations, CRM, inventory, and
-            merchant workflows into one mobile-first platform — built around the
-            iPhone in your pocket.
+            Yeri turns every transaction into business intelligence. Accept
+            contactless payments on iPhone — and run checkout, inventory, staff,
+            CRM, and analytics from the same platform.
           </motion.p>
 
           <motion.div

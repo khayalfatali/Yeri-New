@@ -96,6 +96,7 @@ function Scene() {
       >
         <PointerTilt>
           <IPhone />
+          <ContactlessCard />
           <Particles />
         </PointerTilt>
       </Float>
@@ -342,6 +343,85 @@ function RingPulse({ position }: { position: [number, number, number] }) {
       <mesh>
         <circleGeometry args={[0.1, 64]} />
         <meshBasicMaterial color="#ffffff" transparent opacity={0.92} />
+      </mesh>
+    </group>
+  );
+}
+
+/**
+ * A floating contactless card animating toward the top of the iPhone.
+ * Models the "customer paying with card" moment from the brief.
+ */
+function ContactlessCard() {
+  const ref = useRef<THREE.Group>(null);
+
+  useFrame(({ clock }) => {
+    const t = clock.getElapsedTime();
+    if (!ref.current) return;
+    // breathing approach toward the phone
+    const approach = (Math.sin(t * 0.7) + 1) / 2; // 0..1
+    ref.current.position.x = 0.95 - approach * 0.18;
+    ref.current.position.y = 0.95 - approach * 0.06;
+    ref.current.position.z = 0.18 + approach * 0.06;
+    ref.current.rotation.z = -0.32 + Math.sin(t * 0.9) * 0.04;
+    ref.current.rotation.y = -0.22 + Math.cos(t * 0.6) * 0.05;
+    ref.current.rotation.x = 0.16 + Math.sin(t * 0.8) * 0.03;
+  });
+
+  return (
+    <group ref={ref}>
+      {/* card body */}
+      <RoundedBox args={[0.62, 0.4, 0.012]} radius={0.04} smoothness={4}>
+        <meshPhysicalMaterial
+          color="#0e0e14"
+          metalness={0.85}
+          roughness={0.28}
+          clearcoat={0.7}
+          clearcoatRoughness={0.18}
+        />
+      </RoundedBox>
+
+      {/* metallic accent stripe */}
+      <mesh position={[0, 0, 0.0075]}>
+        <planeGeometry args={[0.62, 0.06]} />
+        <meshPhysicalMaterial
+          color="#bdbec7"
+          metalness={1}
+          roughness={0.18}
+          clearcoat={1}
+        />
+      </mesh>
+
+      {/* contactless wave glyph */}
+      <mesh position={[-0.21, 0.1, 0.008]} rotation={[0, 0, Math.PI / 2]}>
+        <ringGeometry args={[0.024, 0.034, 24, 1, 0, Math.PI]} />
+        <meshBasicMaterial color="#ffffff" transparent opacity={0.9} />
+      </mesh>
+      <mesh position={[-0.21, 0.1, 0.008]} rotation={[0, 0, Math.PI / 2]}>
+        <ringGeometry args={[0.05, 0.06, 24, 1, 0, Math.PI]} />
+        <meshBasicMaterial color="#ffffff" transparent opacity={0.6} />
+      </mesh>
+      <mesh position={[-0.21, 0.1, 0.008]} rotation={[0, 0, Math.PI / 2]}>
+        <ringGeometry args={[0.078, 0.088, 24, 1, 0, Math.PI]} />
+        <meshBasicMaterial color="#ffffff" transparent opacity={0.35} />
+      </mesh>
+
+      {/* embossed number rail */}
+      {[0, 1, 2, 3].map((i) => (
+        <mesh key={i} position={[-0.2 + i * 0.13, -0.08, 0.0075]}>
+          <planeGeometry args={[0.1, 0.018]} />
+          <meshBasicMaterial color="#ffffff" transparent opacity={0.42} />
+        </mesh>
+      ))}
+
+      {/* corner brand mark dots (abstract — no real logo) */}
+      <mesh position={[0.22, -0.14, 0.008]}>
+        <circleGeometry args={[0.028, 32]} />
+        <meshBasicMaterial color="#ff6b6b" transparent opacity={0.85} />
+      </mesh>
+      <mesh position={[0.255, -0.14, 0.008]}>
+        <circleGeometry args={[0.028, 32]} />
+        <meshBasicMaterial color="#ffd166" transparent opacity={0.85} />
       </mesh>
     </group>
   );

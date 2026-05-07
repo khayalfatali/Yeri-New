@@ -51,7 +51,7 @@ export default function TapToPay() {
     >
       <div className="container-page">
         <SectionHeader
-          eyebrow="Tap to Pay on iPhone"
+          eyebrow="Tap to Pay on iPhone · Authorized PSP"
           index="·"
           title={
             <>
@@ -59,7 +59,7 @@ export default function TapToPay() {
               <br /> the terminal.
             </>
           }
-          description="Yeri is among the first platforms to bring Tap to Pay on iPhone to merchants — turning the iPhone in your pocket into a secure, contactless payment terminal. No extra hardware. No dongle. No setup."
+          description="Yeri is an authorized Payment Service Provider on the Apple Acceptance Platform — bringing Tap to Pay on iPhone to merchants across our markets. No extra hardware. No dongle. No setup. Just your iPhone."
         />
 
         <div className="mt-14 grid gap-6 lg:grid-cols-12">
@@ -81,9 +81,11 @@ export default function TapToPay() {
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink-950/70 via-ink-950/0 to-ink-950/30" />
                 <div className="absolute bottom-0 left-0 right-0 flex items-end justify-between p-6">
                   <div>
-                    <p className="eyebrow text-white/80">In partnership with</p>
+                    <p className="eyebrow text-white/80">
+                      Apple Acceptance Platform · Authorized PSP
+                    </p>
                     <p className="mt-1 text-[18px] font-medium text-white">
-                      Apple · Tap to Pay on iPhone
+                      Yeri × Tap to Pay on iPhone
                     </p>
                   </div>
                   <span className="rounded-full bg-white/10 px-2.5 py-1 text-[10.5px] text-white/80 ring-1 ring-white/15 backdrop-blur">
@@ -136,10 +138,11 @@ export default function TapToPay() {
                     </li>
                   ))}
                 </ul>
-                <p className="mt-2 text-[11.5px] text-ink-300">
-                  &quot;Tap to Pay on iPhone&quot; and related imagery are
-                  trademarks of Apple Inc. Used with permission under
-                  Apple&apos;s Marketing Guidelines.
+                <p className="mt-2 text-[11.5px] leading-relaxed text-ink-300">
+                  Yeri Payment Services LLC is an authorized PSP on the Apple
+                  Acceptance Platform. &quot;Tap to Pay on iPhone&quot;, the
+                  Apple logo, and related imagery are trademarks of Apple Inc.,
+                  used in accordance with Apple&apos;s Marketing Guidelines.
                 </p>
               </GlassCard>
             </Reveal>

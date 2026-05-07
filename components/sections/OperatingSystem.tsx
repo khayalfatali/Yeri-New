@@ -25,16 +25,16 @@ export default function OperatingSystem() {
     >
       <div className="container-page">
         <SectionHeader
-          eyebrow="Merchant operating system"
+          eyebrow="Beyond POS"
           index="02"
           align="center"
           title={
             <>
-              One system.
-              <br /> Every workflow.
+              Yeri is not a POS app.
+              <br /> It&apos;s an operating system.
             </>
           }
-          description="Yeri OS unifies the apps merchants use every day — payments, register, inventory, CRM, scheduling, accounting, tax — into one fluid mobile-first experience."
+          description="Most mobile POS tools stop at payment acceptance. Yeri keeps going — unifying checkout, inventory, staff, CRM, analytics, and recommendations into one fluid, mobile-first platform."
         />
 
         <Reveal delay={0.15} className="mt-14">
