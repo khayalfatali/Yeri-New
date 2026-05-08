@@ -1,9 +1,11 @@
 "use client";
 
+import Image from "next/image";
 import SectionHeader from "../ui/SectionHeader";
 import GlassCard from "../ui/GlassCard";
 import Reveal from "../ui/Reveal";
 import AreaChart from "../viz/AreaChart";
+import { APPLE } from "@/lib/apple-images";
 
 export default function Analytics() {
   return (
@@ -14,23 +16,23 @@ export default function Analytics() {
       <div className="container-page">
         <div className="grid items-end gap-10 lg:grid-cols-2">
           <SectionHeader
-            eyebrow="Analytics & AI"
-            index="03"
+            eyebrow="Know your business"
+            index="05"
             title={
               <>
-                Intelligence that runs
-                <br /> your business with you.
+                Numbers that tell you
+                <br /> what to do next.
               </>
             }
-            description="Yeri Intelligence learns the rhythm of your store — surfacing forecasts, anomalies, and decisions before you have to ask. Real-time. Private. On-device when possible."
+            description="Yeri turns every sale into a signal. See what&apos;s selling, when it&apos;s selling, and what to change — without leaving the app you take payments in."
           />
           <Reveal delay={0.15}>
             <div className="flex flex-wrap gap-3 lg:justify-end">
-              <Tag>Forecasting</Tag>
-              <Tag>Anomaly detection</Tag>
-              <Tag>Price elasticity</Tag>
-              <Tag>Cohorts & LTV</Tag>
-              <Tag>Live attribution</Tag>
+              <Tag>Today vs last week</Tag>
+              <Tag>Top sellers</Tag>
+              <Tag>Peak hours</Tag>
+              <Tag>Repeat customers</Tag>
+              <Tag>Recommendations</Tag>
             </div>
           </Reveal>
         </div>
@@ -77,7 +79,6 @@ export default function Analytics() {
                       ],
                     },
                   ]}
-                  xLabels={["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]}
                 />
               </div>
             </GlassCard>
@@ -85,29 +86,33 @@ export default function Analytics() {
 
           <div className="grid gap-6 lg:col-span-4">
             <Reveal delay={0.18}>
-              <GlassCard>
-                <p className="eyebrow">Insight</p>
-                <p className="mt-2 text-[16px] leading-relaxed text-white">
-                  Saturday afternoons are your highest-margin window.
-                  Recommended: bundle pastries with espresso for a +9.2%
-                  basket lift.
-                </p>
-                <div className="mt-4 flex gap-2">
-                  <button className="rounded-full bg-white/10 px-3 py-1.5 text-[12px] text-white ring-1 ring-white/15">
-                    Apply bundle
-                  </button>
-                  <button className="rounded-full bg-white/[0.04] px-3 py-1.5 text-[12px] text-ink-200 ring-1 ring-white/10">
-                    Why this?
-                  </button>
+              <GlassCard padded={false} className="overflow-hidden">
+                <div className="relative aspect-[4/3] w-full overflow-hidden">
+                  <Image
+                    src={APPLE.locationInsights.src}
+                    alt={APPLE.locationInsights.alt}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 30vw"
+                    className="object-cover"
+                    unoptimized
+                  />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink-950/80 via-ink-950/0 to-ink-950/30" />
+                  <div className="absolute inset-x-0 bottom-0 p-5">
+                    <p className="eyebrow text-white/80">Insight</p>
+                    <p className="mt-1 text-[14px] text-white">
+                      Saturdays earn 28% more. Bundle pastries with espresso
+                      for a +9% basket lift.
+                    </p>
+                  </div>
                 </div>
               </GlassCard>
             </Reveal>
             <Reveal delay={0.26}>
               <GlassCard>
-                <p className="eyebrow">Anomaly detected</p>
+                <p className="eyebrow">Heads up</p>
                 <p className="mt-2 text-[14.5px] leading-relaxed text-ink-100">
-                  3.4× spike in chargebacks from a single BIN range in the last
-                  6 hours. Yeri auto-paused affected attempts.
+                  3.4× spike in chargebacks from a single card range over the
+                  last 6 hours. Yeri auto-paused affected attempts.
                 </p>
                 <div className="mt-4 h-1.5 overflow-hidden rounded-full bg-white/[0.06]">
                   <div className="h-full w-3/4 bg-gradient-to-r from-rose-300/70 to-rose-500/40" />

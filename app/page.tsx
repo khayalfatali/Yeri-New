@@ -1,7 +1,8 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/hero/Hero";
-import TapToPay from "@/components/sections/TapToPay";
+import Acceptance from "@/components/sections/Acceptance";
 import Payments from "@/components/sections/Payments";
+import Industries from "@/components/sections/Industries";
 import OperatingSystem from "@/components/sections/OperatingSystem";
 import Analytics from "@/components/sections/Analytics";
 import CRM from "@/components/sections/CRM";
@@ -23,9 +24,11 @@ export default function Home() {
       <main className="relative">
         <Hero />
         <SectionDivider />
-        <TapToPay />
+        <Acceptance />
         <SectionDivider />
         <Payments />
+        <SectionDivider />
+        <Industries />
         <SectionDivider />
         <OperatingSystem />
         <SectionDivider />

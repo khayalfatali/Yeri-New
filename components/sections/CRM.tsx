@@ -1,9 +1,11 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import SectionHeader from "../ui/SectionHeader";
 import GlassCard from "../ui/GlassCard";
 import Reveal from "../ui/Reveal";
+import { APPLE } from "@/lib/apple-images";
 
 const CUSTOMERS = [
   {
@@ -11,7 +13,7 @@ const CUSTOMERS = [
     email: "naomi@hello.com",
     visits: 27,
     spend: "$1,248",
-    tag: "Loyal",
+    tag: "Regular",
     color: "from-rose-300 to-rose-500/60",
   },
   {
@@ -45,15 +47,15 @@ export default function CRM() {
     <section className="relative isolate scroll-mt-24 py-32 sm:py-40">
       <div className="container-page">
         <SectionHeader
-          eyebrow="CRM & Customer Insights"
-          index="04"
+          eyebrow="Build the relationship"
+          index="06"
           title={
             <>
-              Every transaction is a
-              <br /> customer relationship.
+              Every sale is a
+              <br /> first hello.
             </>
           }
-          description="Yeri turns each tap, swipe, and check-in into a living profile. Segment, recognize, and reward — without ever leaving the platform."
+          description="Customers come back when you make it easy. Yeri turns each transaction into a profile, each profile into a relationship — without spreadsheets, exports, or extra apps."
         />
 
         <div className="mt-14 grid gap-6 lg:grid-cols-12">
@@ -110,37 +112,34 @@ export default function CRM() {
 
           <div className="grid gap-6 lg:col-span-5">
             <Reveal delay={0.18}>
-              <GlassCard>
-                <p className="eyebrow">Lifetime value</p>
-                <div className="mt-3 grid grid-cols-3 gap-3">
-                  {[
-                    { l: "Avg LTV", v: "$284" },
-                    { l: "Repeat rate", v: "62%" },
-                    { l: "Win-back", v: "18%" },
-                  ].map((s) => (
-                    <div
-                      key={s.l}
-                      className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-3"
-                    >
-                      <p className="text-[10px] uppercase tracking-[0.18em] text-ink-300">
-                        {s.l}
-                      </p>
-                      <p className="mt-1 text-[18px] font-medium text-white num-mono">
-                        {s.v}
-                      </p>
-                    </div>
-                  ))}
+              <GlassCard padded={false} className="overflow-hidden">
+                <div className="relative aspect-[4/3] w-full overflow-hidden">
+                  <Image
+                    src={APPLE.mapsDiscovery.src}
+                    alt={APPLE.mapsDiscovery.alt}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 30vw"
+                    className="object-cover"
+                    unoptimized
+                  />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink-950/85 via-ink-950/10 to-transparent" />
+                  <div className="absolute inset-x-0 bottom-0 p-5">
+                    <p className="eyebrow text-white/80">Be discovered</p>
+                    <p className="mt-1 text-[14px] text-white">
+                      Show up on the map, in search, and at the right moment.
+                    </p>
+                  </div>
                 </div>
               </GlassCard>
             </Reveal>
             <Reveal delay={0.26}>
               <GlassCard>
                 <p className="eyebrow">Loyalty</p>
-                <p className="mt-2 text-[15px] text-white leading-relaxed">
-                  Auto-rewards trigger when Naomi visits her 30th time. No
-                  punch cards. No app required.
+                <p className="mt-2 text-[14.5px] text-white leading-relaxed">
+                  Reward your regulars automatically. No punch cards. No app
+                  to install.
                 </p>
-                <div className="mt-4 flex items-center gap-2">
+                <div className="mt-4 flex items-center gap-1.5">
                   {Array.from({ length: 30 }).map((_, i) => (
                     <span
                       key={i}

@@ -7,7 +7,7 @@ const COLS = [
     title: "Products",
     items: [
       "Payments",
-      "Tap to Pay on iPhone",
+      "In-person payments",
       "Yeri OS",
       "Analytics",
       "CRM",
@@ -93,10 +93,6 @@ export default function Footer() {
             <p>© {new Date().getFullYear()} Yeri Payment Services LLC. All rights reserved.</p>
             <p className="text-ink-500">
               Reg. No. 1009415381 · e37, m45, Binagadi District, Baku AZ1130, Azerbaijan
-            </p>
-            <p className="text-ink-500">
-              Authorized Payment Service Provider on the Apple Acceptance
-              Platform.
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-6">

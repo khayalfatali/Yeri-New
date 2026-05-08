@@ -17,15 +17,15 @@ export default function Employees() {
     <section className="relative isolate scroll-mt-24 py-32 sm:py-40">
       <div className="container-page">
         <SectionHeader
-          eyebrow="Employee Management"
-          index="06"
+          eyebrow="Run your team"
+          index="09"
           title={
             <>
-              Schedule, track, and pay
-              <br /> your team — from one screen.
+              Hire fast.
+              <br /> Pay easy.
             </>
           }
-          description="Yeri merges scheduling, time-tracking, payroll, and permissions into a single, beautifully simple experience for managers and staff alike."
+          description="Schedule shifts, track hours, and run payroll in a couple of taps. Set what each role can do — and what they can&apos;t — without calling support."
         />
 
         <div className="mt-14 grid gap-6 lg:grid-cols-12">

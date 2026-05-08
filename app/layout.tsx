@@ -9,28 +9,27 @@ export const metadata: Metadata = {
     template: "%s · Yeri",
   },
   description:
-    "Yeri is the Merchant Operating System. Accept contactless payments on iPhone with Tap to Pay, and run checkout, inventory, staff, CRM, and analytics from one mobile-first platform. Authorized PSP on the Apple Acceptance Platform.",
+    "Yeri is the all-in-one platform for taking payments, managing staff, tracking stock, and growing every kind of business — from one place, on the device you already own.",
   keywords: [
     "merchant",
     "payments",
-    "tap to pay",
-    "iPhone",
     "POS",
+    "contactless",
     "operating system",
     "Yeri",
   ],
   openGraph: {
     type: "website",
-    title: "Yeri — The Merchant Operating System",
+    title: "Yeri — Sell anywhere. Run everything.",
     description:
-      "Tap to Pay on iPhone, plus checkout, inventory, staff, CRM, and analytics in one mobile-first platform.",
+      "Take payments, manage staff, track stock, and grow every kind of business — from one place, on the device you already own.",
     siteName: "Yeri",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Yeri — The Merchant Operating System",
+    title: "Yeri — Sell anywhere. Run everything.",
     description:
-      "Tap to Pay on iPhone, plus checkout, inventory, staff, CRM, and analytics in one mobile-first platform.",
+      "Take payments, manage staff, track stock, and grow every kind of business — from one place, on the device you already own.",
   },
 };
 

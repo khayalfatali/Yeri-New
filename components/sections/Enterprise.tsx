@@ -13,15 +13,15 @@ export default function Enterprise() {
     >
       <div className="container-page">
         <SectionHeader
-          eyebrow="Enterprise infrastructure"
-          index="08"
+          eyebrow="Scale without rebuilds"
+          index="10"
           title={
             <>
-              Built for the largest
-              <br /> merchant networks on Earth.
+              From a stall to
+              <br /> ten thousand locations.
             </>
           }
-          description="From single-store boutiques to 10,000-location chains, Yeri scales horizontally with regional residency, fine-grained roles, and the lowest end-to-end transaction latency in the industry."
+          description="Same software, every store. Same data, every dashboard. Add regions, roles, and rules without changing the platform underneath."
         />
 
         <div className="mt-14 grid gap-6 lg:grid-cols-12">

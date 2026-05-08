@@ -4,7 +4,7 @@ import SectionHeader from "../ui/SectionHeader";
 import GlassCard from "../ui/GlassCard";
 import Reveal from "../ui/Reveal";
 
-const CODE = `// Charge a customer with Tap to Pay on iPhone
+const CODE = `// Take a contactless payment in any merchant app
 import Yeri from "@yeri/sdk";
 
 const yeri = new Yeri(process.env.YERI_KEY);
@@ -12,7 +12,7 @@ const yeri = new Yeri(process.env.YERI_KEY);
 const charge = await yeri.charges.create({
   amount: 4800,             // $48.00
   currency: "USD",
-  source: "tap_to_pay",
+  source: "contactless",
   metadata: { orderId: "YR-1042" },
 });
 
@@ -28,15 +28,15 @@ export default function Developers() {
       <div className="container-page">
         <div className="grid items-end gap-10 lg:grid-cols-2">
           <SectionHeader
-            eyebrow="Developer APIs"
-            index="09"
+            eyebrow="For developers"
+            index="11"
             title={
               <>
-                Programmable
-                <br /> commerce, end to end.
+                A clean API for
+                <br /> the whole business.
               </>
             }
-            description="A single API for payments, orders, customers, inventory, scheduling, payroll. Webhooks, SDKs, and a typed schema that feels like a library — not a spec."
+            description="One API for payments, orders, customers, stock, schedules, and payroll. Typed schemas. Idempotent by default. SDKs that feel like a library, not a spec."
           />
           <Reveal delay={0.15}>
             <div className="flex flex-wrap gap-3 lg:justify-end">

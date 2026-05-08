@@ -8,13 +8,16 @@ export default function SmoothScroll() {
     if (typeof window === "undefined") return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
+    // Skip on touch devices — native scrolling is smoother on mobile.
+    const isTouch = matchMedia("(pointer: coarse)").matches;
+    if (isTouch) return;
+
     const lenis = new Lenis({
-      duration: 1.15,
+      duration: 1.0,
       easing: (t) => 1 - Math.pow(1 - t, 3),
       smoothWheel: true,
       wheelMultiplier: 1,
-      touchMultiplier: 1.4,
-      lerp: 0.1,
+      lerp: 0.12,
     });
 
     let raf = 0;

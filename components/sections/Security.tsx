@@ -10,15 +10,15 @@ export default function Security() {
     <section className="relative isolate scroll-mt-24 py-32 sm:py-40">
       <div className="container-page">
         <SectionHeader
-          eyebrow="Security & HSM architecture"
-          index="10"
+          eyebrow="Trust, by design"
+          index="12"
           title={
             <>
-              Hardware-rooted security,
-              <br /> end-to-end.
+              Bank-grade. Without
+              <br /> the bank-grade headache.
             </>
           }
-          description="Yeri encrypts at the chip, the network, and the database. Keys never leave dedicated FIPS 140-3 Level 3 hardware modules, and every transaction is cryptographically attested."
+          description="Encryption at the chip, the network, and the database. Keys never leave dedicated hardware modules. Every transaction is signed and verifiable."
         />
 
         <div className="mt-14 grid gap-6 lg:grid-cols-12">

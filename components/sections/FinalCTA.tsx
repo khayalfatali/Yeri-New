@@ -33,19 +33,19 @@ export default function FinalCTA() {
 
       <div className="container-page text-center">
         <Reveal>
-          <span className="eyebrow">The future of merchant infrastructure</span>
+          <span className="eyebrow">Get started today</span>
         </Reveal>
         <Reveal delay={0.08} as="h2">
           <span className="display mt-5 block text-balance text-[44px] font-medium gradient-text sm:text-[64px] lg:text-[80px]">
-            If Apple designed
-            <br /> a merchant platform —
-            <br /> this would be it.
+            One platform.
+            <br /> Built for the
+            <br /> way you work.
           </span>
         </Reveal>
         <Reveal delay={0.16} as="p">
           <span className="mx-auto mt-6 block max-w-2xl text-balance text-[16.5px] leading-[1.6] text-ink-200">
-            Join the merchants reimagining what running a business feels like.
-            Onboarding takes minutes. Cancellation takes seconds.
+            Open Yeri on a phone you already own. Take your first payment in
+            minutes. Cancel any time — no calls, no contracts.
           </span>
         </Reveal>
         <Reveal delay={0.22}>

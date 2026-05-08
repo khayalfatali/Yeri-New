@@ -1,16 +1,18 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import SectionHeader from "../ui/SectionHeader";
 import GlassCard from "../ui/GlassCard";
 import Reveal from "../ui/Reveal";
+import { APPLE } from "@/lib/apple-images";
 
 const APPS = [
-  { name: "Payments", color: "from-white to-white/40", icon: "Pay" },
-  { name: "Register", color: "from-amber-300 to-amber-500/60", icon: "Reg" },
-  { name: "CRM", color: "from-rose-300 to-rose-500/60", icon: "Cust" },
-  { name: "Inventory", color: "from-emerald-300 to-emerald-500/60", icon: "Inv" },
-  { name: "Analytics", color: "from-sky-300 to-sky-500/60", icon: "An" },
+  { name: "Checkout", color: "from-white to-white/40", icon: "Pay" },
+  { name: "Catalog", color: "from-amber-300 to-amber-500/60", icon: "Cat" },
+  { name: "Customers", color: "from-rose-300 to-rose-500/60", icon: "Cust" },
+  { name: "Stock", color: "from-emerald-300 to-emerald-500/60", icon: "Stk" },
+  { name: "Reports", color: "from-sky-300 to-sky-500/60", icon: "Rep" },
   { name: "Team", color: "from-violet-300 to-violet-500/60", icon: "Team" },
   { name: "Loyalty", color: "from-fuchsia-300 to-fuchsia-500/60", icon: "Loy" },
   { name: "Tax", color: "from-teal-300 to-teal-500/60", icon: "Tax" },
@@ -25,67 +27,89 @@ export default function OperatingSystem() {
     >
       <div className="container-page">
         <SectionHeader
-          eyebrow="Beyond POS"
-          index="02"
+          eyebrow="More than a POS"
+          index="04"
           align="center"
           title={
             <>
-              Yeri is not a POS app.
-              <br /> It&apos;s an operating system.
+              All your tools.
+              <br /> All in one place.
             </>
           }
-          description="Most mobile POS tools stop at payment acceptance. Yeri keeps going — unifying checkout, inventory, staff, CRM, analytics, and recommendations into one fluid, mobile-first platform."
+          description="Stop stitching apps together. Yeri brings checkout, stock, customers, staff, and reports into a single system — with one login, one bill, one place to look."
         />
 
-        <Reveal delay={0.15} className="mt-14">
-          <div className="relative mx-auto max-w-5xl">
-            {/* glass dock */}
-            <div className="glass-strong relative mx-auto rounded-[36px] p-6 sm:p-10">
-              <div className="grid grid-cols-3 gap-4 sm:grid-cols-3 sm:gap-6 lg:grid-cols-3">
-                {APPS.map((a, i) => (
-                  <motion.div
-                    key={a.name}
-                    initial={{ opacity: 0, y: 20, rotate: -2 }}
-                    whileInView={{ opacity: 1, y: 0, rotate: 0 }}
-                    viewport={{ once: true, margin: "-10%" }}
-                    transition={{
-                      duration: 0.7,
-                      delay: 0.05 * i,
-                      ease: [0.16, 1, 0.3, 1],
+        <Reveal delay={0.12} className="mt-14">
+          <div className="relative mx-auto max-w-6xl overflow-hidden rounded-3xl border border-white/[0.07]">
+            <div className="relative aspect-[16/9] w-full overflow-hidden">
+              <Image
+                src={APPLE.businessHero.src}
+                alt={APPLE.businessHero.alt}
+                fill
+                sizes="(max-width: 1280px) 100vw, 1100px"
+                className="object-cover"
+                unoptimized
+              />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink-950/85 via-ink-950/30 to-ink-950/40" />
+            </div>
+            <div className="absolute inset-x-0 bottom-0 p-6 sm:p-10">
+              <p className="eyebrow text-white/80">One platform</p>
+              <h3 className="mt-2 max-w-2xl text-[24px] font-medium tracking-tight text-white sm:text-[32px]">
+                The system runs on every screen you already own.
+              </h3>
+              <p className="mt-2 max-w-xl text-[14px] text-white/85">
+                Mac for the back office. iPad on the counter. iPhone for the
+                floor. Same data. Same controls. Same Yeri.
+              </p>
+            </div>
+          </div>
+        </Reveal>
+
+        <Reveal delay={0.18} className="mt-12">
+          <div className="glass-strong relative mx-auto max-w-5xl rounded-[36px] p-6 sm:p-10">
+            <div className="grid grid-cols-3 gap-4 sm:gap-6">
+              {APPS.map((a, i) => (
+                <motion.div
+                  key={a.name}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-10%" }}
+                  transition={{
+                    duration: 0.6,
+                    delay: 0.04 * i,
+                    ease: [0.16, 1, 0.3, 1],
+                  }}
+                  className="group flex items-center gap-4 rounded-2xl border border-white/[0.06] bg-white/[0.02] p-4 transition-colors duration-300 hover:border-white/15"
+                >
+                  <span
+                    className={`relative flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${a.color} text-[10px] font-medium text-ink-950`}
+                    style={{
+                      boxShadow:
+                        "0 1px 0 0 rgba(255,255,255,0.5) inset, 0 8px 24px -8px rgba(0,0,0,0.6)",
                     }}
-                    whileHover={{ y: -6, scale: 1.02 }}
-                    className="group flex items-center gap-4 rounded-2xl border border-white/[0.06] bg-white/[0.02] p-4 hover:border-white/15"
                   >
+                    {a.icon}
                     <span
-                      className={`relative flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${a.color} text-[11px] font-medium text-ink-950`}
-                      style={{
-                        boxShadow:
-                          "0 1px 0 0 rgba(255,255,255,0.5) inset, 0 8px 24px -8px rgba(0,0,0,0.6)",
-                      }}
-                    >
-                      {a.icon}
-                      <span
-                        aria-hidden
-                        className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-b from-white/40 to-transparent opacity-50"
-                      />
-                    </span>
-                    <div className="min-w-0">
-                      <p className="text-[14px] font-medium text-white">
-                        {a.name}
-                      </p>
-                      <p className="truncate text-[11.5px] text-ink-300">
-                        Native to Yeri OS
-                      </p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
+                      aria-hidden
+                      className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-b from-white/40 to-transparent opacity-50"
+                    />
+                  </span>
+                  <div className="min-w-0">
+                    <p className="text-[14px] font-medium text-white">
+                      {a.name}
+                    </p>
+                    <p className="truncate text-[11.5px] text-ink-300">
+                      Built into Yeri
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
             </div>
 
-            <div className="mt-10 grid gap-6 sm:grid-cols-3">
-              <Stat label="Workflows unified" value="42+" />
+            <div className="mt-8 grid gap-6 sm:grid-cols-3">
+              <Stat label="Apps replaced" value="9+" />
               <Stat label="Setup time" value="< 8 min" />
-              <Stat label="Devices supported" value="iPhone · iPad · Mac" small />
+              <Stat label="Devices" value="Phone · Tablet · Mac" small />
             </div>
           </div>
         </Reveal>

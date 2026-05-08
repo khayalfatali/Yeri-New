@@ -29,15 +29,15 @@ export default function GlobalSection() {
     <section className="relative isolate scroll-mt-24 py-32 sm:py-40">
       <div className="container-page">
         <SectionHeader
-          eyebrow="Global expansion"
-          index="11"
+          eyebrow="Sell across borders"
+          index="13"
           title={
             <>
-              One platform.
-              <br /> Every market.
+              One Yeri,
+              <br /> every market.
             </>
           }
-          description="Yeri runs on local rails in every country it serves — with native settlement, currency, tax, and compliance handled at the platform layer."
+          description="Local payment rails. Local currencies. Local tax and compliance. All handled at the platform layer — so you can open a new market without opening a new vendor."
         />
 
         <div className="mt-14 grid gap-6 lg:grid-cols-12">

@@ -18,15 +18,15 @@ export default function Inventory() {
     <section className="relative isolate scroll-mt-24 py-32 sm:py-40">
       <div className="container-page">
         <SectionHeader
-          eyebrow="Inventory & Operations"
-          index="05"
+          eyebrow="Track every item"
+          index="07"
           title={
             <>
-              Every item, every shelf,
-              <br /> in real time.
+              Stock that knows
+              <br /> what you sold.
             </>
           }
-          description="Yeri tracks supply across every location and channel — auto-reordering, demand-forecasting, and flagging anomalies before they reach the shelf."
+          description="Sell an item — Yeri counts it down. Run low — Yeri reorders. Across every location, in real time. Nothing to refresh, nothing to reconcile."
         />
 
         <div className="mt-14 grid gap-6 lg:grid-cols-12">

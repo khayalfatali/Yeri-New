@@ -1,110 +1,102 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import Image from "next/image";
+import { motion } from "framer-motion";
 import SectionHeader from "../ui/SectionHeader";
 import GlassCard from "../ui/GlassCard";
 import Reveal from "../ui/Reveal";
+import { APPLE } from "@/lib/apple-images";
 
 export default function Payments() {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
-  const y = useTransform(scrollYProgress, [0, 1], [40, -40]);
-
   return (
-    <section
-      ref={ref}
-      id="payments"
-      className="relative isolate scroll-mt-24 py-32 sm:py-40"
-    >
+    <section className="relative isolate scroll-mt-24 py-32 sm:py-40">
       <div className="container-page">
         <SectionHeader
-          eyebrow="Payments"
-          index="01"
+          eyebrow="Sell in person"
+          index="02"
           title={
             <>
-              Accept any payment.
-              <br />
-              Anywhere your iPhone goes.
+              Built for the way
+              <br /> you work.
             </>
           }
-          description="Tap to Pay on iPhone, Apple Pay, contactless cards, QR, and online checkout — all settled to one balance, with one set of analytics, on one mobile-first platform."
+          description="Open a tab. Run a tip. Split a check. Refund a sale. Yeri handles the moments your business actually runs on — without slowing the line down."
         />
 
         <div className="mt-14 grid gap-6 lg:grid-cols-12">
-          <Reveal delay={0.1} className="lg:col-span-7">
-            <GlassCard className="relative overflow-hidden p-0">
-              <div className="relative h-[440px]">
-                {/* ambient */}
-                <div
-                  className="absolute inset-0"
-                  style={{
-                    background:
-                      "radial-gradient(60% 60% at 30% 30%, rgba(255,255,255,0.06), transparent 60%), radial-gradient(50% 50% at 80% 80%, rgba(160,180,255,0.06), transparent 60%)",
-                  }}
+          <Reveal delay={0.1} className="lg:col-span-5">
+            <GlassCard padded={false} className="overflow-hidden">
+              <div className="relative aspect-[3/4] w-full overflow-hidden">
+                <Image
+                  src={APPLE.ukPayment.src}
+                  alt={APPLE.ukPayment.alt}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                  className="object-cover"
+                  unoptimized
                 />
-                <motion.div
-                  style={{ y }}
-                  className="absolute inset-0 flex items-center justify-center"
-                >
-                  <PaymentVisual />
-                </motion.div>
-              </div>
-              <div className="relative flex flex-col gap-4 p-7 sm:flex-row sm:items-end sm:justify-between">
-                <div>
-                  <p className="eyebrow">Tap to Pay on iPhone</p>
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink-950/80 via-ink-950/10 to-ink-950/30" />
+                <div className="absolute bottom-0 left-0 right-0 p-6">
+                  <p className="eyebrow text-white/80">In the wild</p>
                   <h3 className="mt-2 text-[22px] font-medium tracking-tight text-white">
-                    No terminal. No dongle. No hardware.
+                    Open early. Close late.
                   </h3>
-                  <p className="mt-1 max-w-md text-[14px] text-ink-200">
-                    Turn iPhone into a contactless terminal in seconds. Accept
-                    cards, Apple Pay, and digital wallets — natively.
+                  <p className="mt-1 text-[13px] text-white/85">
+                    Yeri keeps up — at the bar, the booth, and the back of
+                    house.
                   </p>
                 </div>
-                <a
-                  href="#"
-                  className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-[13px] text-white hover:bg-white/10"
-                >
-                  Learn more →
-                </a>
               </div>
             </GlassCard>
           </Reveal>
 
-          <div className="grid gap-6 lg:col-span-5 lg:grid-rows-2">
-            <Reveal delay={0.18}>
+          <div className="grid gap-6 lg:col-span-7">
+            <Reveal delay={0.16}>
               <GlassCard>
-                <p className="eyebrow">Settlement</p>
-                <h3 className="mt-2 text-[20px] font-medium text-white">
-                  Next-day funding, instant payouts.
-                </h3>
-                <p className="mt-2 text-[14px] text-ink-200">
-                  Move money the moment it&apos;s ready. Auto-payout to bank,
-                  card, or Yeri Balance.
-                </p>
-                <div className="mt-5 flex items-center gap-3">
-                  <Pill>1.4% + 8¢</Pill>
-                  <Pill subtle>Tap to Pay</Pill>
-                  <Pill subtle>Apple Pay</Pill>
+                <div className="flex flex-col gap-6 sm:flex-row sm:items-center">
+                  <div className="flex-1">
+                    <p className="eyebrow">Checkout</p>
+                    <h3 className="mt-2 text-[22px] font-medium tracking-tight text-white">
+                      The cleanest checkout in retail.
+                    </h3>
+                    <p className="mt-2 text-[14px] text-ink-200">
+                      Keypad, catalog, modifiers, discounts, taxes — laid out
+                      like the iPhone&apos;s own apps. New staff are productive
+                      in minutes.
+                    </p>
+                  </div>
+                  <Keypad />
                 </div>
               </GlassCard>
             </Reveal>
-            <Reveal delay={0.26}>
-              <GlassCard>
-                <p className="eyebrow">Offline-first</p>
-                <h3 className="mt-2 text-[20px] font-medium text-white">
-                  Sales never stop, even when networks do.
-                </h3>
-                <p className="mt-2 text-[14px] text-ink-200">
-                  Yeri queues, signs, and syncs transactions automatically the
-                  moment connectivity returns.
-                </p>
-                <OfflineLine />
-              </GlassCard>
-            </Reveal>
+            <div className="grid gap-6 sm:grid-cols-2">
+              <Reveal delay={0.22}>
+                <GlassCard>
+                  <p className="eyebrow">Offline-first</p>
+                  <h3 className="mt-2 text-[18px] font-medium text-white">
+                    Sales never stop.
+                  </h3>
+                  <p className="mt-2 text-[13.5px] text-ink-200">
+                    When the network drops, Yeri queues, signs, and syncs the
+                    moment you&apos;re back online.
+                  </p>
+                  <OfflineLine />
+                </GlassCard>
+              </Reveal>
+              <Reveal delay={0.28}>
+                <GlassCard>
+                  <p className="eyebrow">Receipts</p>
+                  <h3 className="mt-2 text-[18px] font-medium text-white">
+                    Digital. Smarter.
+                  </h3>
+                  <p className="mt-2 text-[13.5px] text-ink-200">
+                    Every receipt becomes a customer profile, a feedback prompt,
+                    and a repeat-visit signal — without lifting a finger.
+                  </p>
+                  <Receipt />
+                </GlassCard>
+              </Reveal>
+            </div>
           </div>
         </div>
       </div>
@@ -112,33 +104,29 @@ export default function Payments() {
   );
 }
 
-function Pill({
-  children,
-  subtle,
-}: {
-  children: React.ReactNode;
-  subtle?: boolean;
-}) {
+function Keypad() {
+  const keys = ["1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "0", "⌫"];
   return (
-    <span
-      className={`rounded-full px-2.5 py-1 text-[11px] ring-1 ${
-        subtle
-          ? "bg-white/[0.04] text-ink-200 ring-white/10"
-          : "bg-white/10 text-white ring-white/15"
-      }`}
-    >
-      {children}
-    </span>
+    <div className="w-[180px] shrink-0 grid grid-cols-3 gap-1.5 rounded-2xl border border-white/[0.06] bg-white/[0.02] p-2.5">
+      {keys.map((k) => (
+        <span
+          key={k}
+          className="flex aspect-square items-center justify-center rounded-xl bg-white/[0.04] text-[14px] text-white ring-1 ring-white/[0.06]"
+        >
+          {k}
+        </span>
+      ))}
+    </div>
   );
 }
 
 function OfflineLine() {
   return (
-    <div className="mt-5 flex items-center gap-2">
-      {Array.from({ length: 24 }).map((_, i) => (
+    <div className="mt-4 flex items-center gap-1">
+      {Array.from({ length: 18 }).map((_, i) => (
         <motion.span
           key={i}
-          className="h-6 w-[3px] rounded-full bg-white/40"
+          className="h-5 w-[3px] rounded-full bg-white/40"
           initial={{ scaleY: 0.3, opacity: 0.3 }}
           animate={{
             scaleY: [0.3, 0.9, 0.4, 1, 0.5],
@@ -156,92 +144,27 @@ function OfflineLine() {
   );
 }
 
-function PaymentVisual() {
+function Receipt() {
   return (
-    <div className="relative h-[300px] w-[440px]">
-      {/* card 1 */}
-      <motion.div
-        initial={{ y: 10, rotate: -10 }}
-        animate={{ y: [10, -2, 10], rotate: [-10, -8, -10] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute left-2 top-10 h-[180px] w-[300px] rounded-2xl"
-        style={{
-          background:
-            "linear-gradient(135deg, rgba(255,255,255,0.18), rgba(255,255,255,0.04) 60%)",
-          border: "1px solid rgba(255,255,255,0.12)",
-          boxShadow: "0 30px 60px -20px rgba(0,0,0,0.7)",
-          backdropFilter: "blur(18px)",
-        }}
-      >
-        <div className="flex items-center justify-between p-5">
-          <div className="text-[10px] uppercase tracking-[0.18em] text-ink-200">
-            Yeri · Black
-          </div>
-          <div className="flex items-center gap-1">
-            <span className="h-3.5 w-3.5 rounded-full bg-red-400/80" />
-            <span className="-ml-1.5 h-3.5 w-3.5 rounded-full bg-amber-300/80" />
-          </div>
+    <div className="mt-4 rounded-2xl border border-white/[0.06] bg-white/[0.02] p-3">
+      <div className="flex items-center justify-between">
+        <p className="text-[12.5px] font-medium text-white">Maison Verte</p>
+        <span className="text-[10.5px] text-ink-300 num-mono">#YR-1042</span>
+      </div>
+      <div className="mt-2 space-y-1 text-[11px] text-ink-200">
+        <div className="flex justify-between">
+          <span>Oat latte · 2</span>
+          <span className="num-mono">$11.00</span>
         </div>
-        <div className="px-5">
-          <div className="mt-10 text-[13px] tracking-[0.18em] text-white num-mono">
-            •••• •••• •••• 4071
-          </div>
-          <div className="mt-2 flex items-center justify-between text-[10px] text-ink-200">
-            <span>MAISON VERTE</span>
-            <span>09 / 28</span>
-          </div>
+        <div className="flex justify-between">
+          <span>Croissant</span>
+          <span className="num-mono">$4.20</span>
         </div>
-      </motion.div>
-
-      {/* card 2 */}
-      <motion.div
-        initial={{ y: -8, rotate: 8 }}
-        animate={{ y: [-8, 4, -8], rotate: [8, 6, 8] }}
-        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute right-2 top-2 h-[180px] w-[300px] rounded-2xl"
-        style={{
-          background:
-            "linear-gradient(135deg, rgba(180,200,255,0.18), rgba(255,255,255,0.04) 60%)",
-          border: "1px solid rgba(255,255,255,0.12)",
-          boxShadow: "0 30px 60px -20px rgba(0,0,0,0.7)",
-          backdropFilter: "blur(18px)",
-        }}
-      >
-        <div className="flex items-center justify-between p-5">
-          <div className="text-[10px] uppercase tracking-[0.18em] text-ink-200">
-            Apple Pay · Wallet
-          </div>
-          <svg width="24" height="14" viewBox="0 0 40 24" fill="white">
-            <path d="M9.6 4.8c.7-.8 1.1-2 1-3.1-1 .1-2.1.7-2.7 1.5-.6.7-1.2 1.9-1 3 1 .1 2-.6 2.7-1.4zm.9 1.4c-1.5-.1-2.7.8-3.4.8-.7 0-1.7-.8-2.9-.7-1.5 0-2.9.9-3.6 2.2-1.6 2.7-.4 6.7 1.1 8.9.7 1.1 1.6 2.3 2.8 2.2 1.1 0 1.6-.7 2.9-.7 1.4 0 1.8.7 2.9.7 1.2 0 2-1.1 2.7-2.2.9-1.3 1.2-2.5 1.3-2.6-.1 0-2.5-1-2.5-3.8 0-2.4 2-3.5 2-3.6-1.1-1.6-2.7-1.8-3.3-1.8z" />
-          </svg>
-        </div>
-        <div className="px-5">
-          <div className="mt-10 text-[16px] font-medium tracking-tight text-white num-mono">
-            $48.00
-          </div>
-          <div className="mt-2 flex items-center justify-between text-[10px] text-ink-200">
-            <span>Charged · Maison Verte</span>
-            <span>now</span>
-          </div>
-        </div>
-      </motion.div>
-
-      {/* contactless waves */}
-      <motion.div
-        animate={{ scale: [1, 1.4, 1.7], opacity: [0.5, 0.2, 0] }}
-        transition={{ duration: 2.4, repeat: Infinity, ease: "easeOut" }}
-        className="pointer-events-none absolute left-1/2 top-1/2 h-12 w-12 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/40"
-      />
-      <motion.div
-        animate={{ scale: [1, 1.4, 1.7], opacity: [0.5, 0.2, 0] }}
-        transition={{
-          duration: 2.4,
-          repeat: Infinity,
-          ease: "easeOut",
-          delay: 0.6,
-        }}
-        className="pointer-events-none absolute left-1/2 top-1/2 h-12 w-12 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/40"
-      />
+      </div>
+      <div className="mt-2 flex justify-between border-t border-white/[0.06] pt-2 text-[12px] text-white">
+        <span>Total</span>
+        <span className="num-mono">$15.20</span>
+      </div>
     </div>
   );
 }

@@ -10,8 +10,6 @@ const nextConfig = {
       },
     ],
   },
-  // R3F + three deeply-nested ESM works fine; keep transpilePackages explicit for safety
-  transpilePackages: ["three"],
 };
 
 export default nextConfig;

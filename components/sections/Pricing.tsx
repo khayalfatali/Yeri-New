@@ -11,7 +11,7 @@ const PLANS = [
     price: "Free",
     rate: "1.4% + 8¢",
     features: [
-      "Tap to Pay on iPhone",
+      "Contactless payments",
       "Single location",
       "Basic analytics",
       "Up to 3 staff",
@@ -63,11 +63,10 @@ export default function Pricing() {
           eyebrow="Pricing"
           title={
             <>
-              Transparent.
-              <br /> Honest. Predictable.
+              Simple, by design.
             </>
           }
-          description="No hidden fees, no surprise lock-ins. Cancel any time. Pay for what you use, or talk to us about volume rates."
+          description="Pay one rate per sale. No monthly minimums. No setup fees. Cancel any time. Volume? Call us — we&apos;ll talk."
         />
 
         <div className="mx-auto mt-14 grid max-w-6xl gap-6 lg:grid-cols-3">
